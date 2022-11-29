@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% load static %}
+{% block title %}Share a post{% endblock %}
+{% block content %}
+    {% if sent %}
+
+        <h1>E-mail successfully sent</h1>
+        <p>
+            Ваш вопрос о "{{ product.name }}" отправлен в магазин "название магазина" {{ cd.to }}.
+        </p>
+    {% else %}
+        <div id="main">
+            <h1>Share "{{ product.name }}" by e-mail</h1>
+            {% load crispy_forms_tags %}
+            <form action="." method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" value="Send e-mail">
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
