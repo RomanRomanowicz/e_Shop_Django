@@ -9,7 +9,7 @@ from store.models.products import Product
 class HomePageView(ListView):
     model = Product
     context_object_name = 'home'
-    template_name = 'store/base.html'
+    template_name = 'store/home.html'
 
 
 def shop_view(request):

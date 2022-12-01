@@ -23,7 +23,7 @@ def logout_user(request):
 
 class RegisterUser(CreateView):
     form_class = RegisterUserForm
-    template_name = 'accounts/register.html'
+    template_name = 'accounts/pages-sign-up.html'
     context_object_name = 'register'
     success_url = reverse_lazy('accounts:login')
 
