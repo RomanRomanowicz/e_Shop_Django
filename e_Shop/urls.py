@@ -21,8 +21,11 @@ from django.urls import path, include, re_path
 urlpatterns = [
     path('', include('store.urls', namespace='store')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
     path('cart/', include('cart.urls', namespace='cart')),
     re_path(r'^orders/', include('orders.urls', namespace='orders')),
+    path('dashboard/', include('dashboard.urls', namespace='dashboard')),
+
 ]
 
 if settings.DEBUG:

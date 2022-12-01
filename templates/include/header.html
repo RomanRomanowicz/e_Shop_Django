@@ -130,10 +130,10 @@
 
                             {% if user.is_authenticated %}
                                 <li><a class="nav-item nav-link">User: {{ user.get_username }}</a></li>
-                                <li><a class="nav-item nav-link" href="#">Logout</a></li>
+                                <li><a class="nav-item nav-link" href="{% url 'accounts:logout'%}?next={{request.path}}">Logout</a></li>
                             {% else %}
-                                <li><a class="nav-item nav-link" href="#">Login</a></li>
-                                <a class="nav-item nav-link" href="#">Register</a>
+                                <li><a class="nav-item nav-link" href="{% url 'accounts:login'%}?next={{request.path}}">Login</a></li>
+                                <a class="nav-item nav-link" href="{% url 'accounts:register'%}?next={{request.path}}">Register</a>
                             {% endif %}
 
 

@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
+import dashboard.apps
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,6 +44,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    "accounts.apps.AccountsConfig",
+    'dashboard.apps.DashboardConfig',
 ]
 
 MIDDLEWARE = [
@@ -121,8 +125,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "dashboard/static"),]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -144,3 +148,5 @@ FILTERS_EMPTY_CHOICE_LABEL = 'All Categories'
 # End django-filter
 
 CART_SESSION_ID = 'cart'
+
+# LOGIN_REDIRECT_URL = '/'
