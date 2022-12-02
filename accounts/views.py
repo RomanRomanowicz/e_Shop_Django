@@ -1,4 +1,5 @@
 from django.contrib.auth import logout, login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -14,6 +15,11 @@ class LoginUserView(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('store:home')
+
+
+@login_required
+def home(request):
+    return render(request, 'accounts/home.html')
 
 
 def logout_user(request):

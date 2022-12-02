@@ -26,6 +26,23 @@ def post_message(request, id):
     return render(request, 'store/message.html', {'product': product, 'form': form, 'sent': sent})
 
 
+def contact_message(request):
+    sent = False
+    if request.method == 'POST':
+        # Form was submitted
+        form = EmailPostForm(request.POST)
+        if form.is_valid():
+            # Form fields passed validation
+            cd = form.cleaned_data
+            subject = '{} ({})'.format(cd['your_name'], cd['your_email'])
+            message = 'question: {} \'s contents: {}'.format(cd['your_name'], cd['question'])
+            send_mail(subject, message, 'cop.testow@gmail.com', ['rr.romanowicz@gmail.com', cd['your_email']])
+            sent = True
+    else:
+        form = EmailPostForm()
+    return render(request, 'store/test.html', {'form': form, 'sent': sent})
+
+
 # def contact_message(request):
 #     send_mail('cześć', 'message', 'cop.testow@gmail.com', ['rr.romanowicz@gmail.com'], fail_silently=False)
 #     return render(request, 'store/test.html')

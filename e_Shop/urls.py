@@ -17,6 +17,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include, re_path
+from accounts.views import home
 
 urlpatterns = [
     path('', include('store.urls', namespace='store')),
@@ -25,7 +26,8 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace='cart')),
     re_path(r'^orders/', include('orders.urls', namespace='orders')),
     path('dashboard/', include('dashboard.urls', namespace='dashboard')),
-
+    path('social-auth/', include('social_django.urls', namespace='social')),
+    path("", home, name='home'),
 ]
 
 if settings.DEBUG:
