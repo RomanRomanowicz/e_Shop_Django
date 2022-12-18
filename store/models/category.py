@@ -1,10 +1,11 @@
 from django.db import models
 from django.urls import reverse
+from autoslug import AutoSlugField
 
 
 class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='наименование категории')
-    slug = models.SlugField(max_length=200, db_index=True, unique=True, verbose_name='SLUG')
+    slug = AutoSlugField(populate_from='name', unique=True, null=True, default=None)
 
     class Meta:
         ordering = ('name',)
@@ -17,7 +18,7 @@ class Category(models.Model):
 
 class CategoryGender(models.Model):
     gender = models.CharField(max_length=200, db_index=True, blank=True, null=True, verbose_name='Категория по полу')
-    slug = models.SlugField(max_length=200, db_index=True, unique=True, verbose_name='SLUG')
+    slug = AutoSlugField(populate_from='gender', unique=True, null=True, default=None)
 
     class Meta:
         ordering = ('gender',)
@@ -30,7 +31,7 @@ class CategoryGender(models.Model):
 
 class CategoryColor(models.Model):
     color = models.CharField(max_length=200, db_index=True, verbose_name='Категория по цвету')
-    slug = models.SlugField(max_length=200, db_index=True, unique=True, verbose_name='SLUG')
+    slug = AutoSlugField(populate_from='color', unique=True, null=True, default=None)
 
     class Meta:
         ordering = ('color',)
@@ -43,7 +44,7 @@ class CategoryColor(models.Model):
 
 class CategorySize(models.Model):
     size = models.CharField(max_length=200, db_index=True, verbose_name='Категория по размеру')
-    slug = models.SlugField(max_length=200, db_index=True, unique=True, verbose_name='SLUG')
+    slug = AutoSlugField(populate_from='size', unique=True, null=True, default=None)
 
     class Meta:
         ordering = ('size',)

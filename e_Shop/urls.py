@@ -25,7 +25,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('cart/', include('cart.urls', namespace='cart')),
     re_path(r'^orders/', include('orders.urls', namespace='orders')),
-    path('dashboard/', include('dashboard.urls', namespace='dashboard')),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path("", home, name='home'),
 ]

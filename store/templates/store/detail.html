@@ -11,9 +11,12 @@
 <!--    carousel    -->
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner border">
-                        {% for photos in product.image.all %}
                         <div class="carousel-item {% if forloop.counter0 == 0 %} active{% endif %}">
-                          <img src="{{ photos.image.url }}" class="d-block w-100" alt="...">
+                            <img src="{{ product.main_image.url }}" class="d-block w-100" alt="...">
+                        </div>
+                        {% for image in images %}
+                        <div class="carousel-item {% if forloop.counter0 == 0 %} active{% endif %}">
+                            <img src="{{ image.images.url }}" class="d-block w-100" alt="...">
                         </div>
                         {% endfor %}
                     </div>

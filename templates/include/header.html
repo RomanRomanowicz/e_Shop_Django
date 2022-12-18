@@ -53,7 +53,7 @@
                         <span class="badge">{{ total_items }}</span>
                     </a>
                     {% else %}
-                        <a href="#" class="btn border">
+                        <a href="{% url 'cart:cart_detail' %}" class="btn border">
                         <i class="fas fa-shopping-cart text-primary"></i>
                         <span class="badge">0</span>
                     </a>
@@ -98,11 +98,13 @@
 
                             {% if user.is_authenticated %}
                                 <li><a class="nav-item nav-link">User: {{ user.get_username }}</a></li>
-                                <li><a class="nav-item nav-link" href="{% url 'accounts:logout'%}?next={{request.path}}">Logout</a></li>
+                                <li><a class="nav-item nav-link" href="{% url 'accounts:logout' %}?next={{request.path}}">Logout</a></li>
                             {% else %}
-                                <li><a class="nav-item nav-link" href="{% url 'accounts:login'%}?next={{request.path}}">Login</a></li>
-                                <a class="nav-item nav-link" href="{% url 'accounts:register'%}?next={{request.path}}">Register</a>
+                                <li><a class="nav-item nav-link" href="{% url 'accounts:login' %}?next={{request.path}}">Login</a></li>
+                                <a class="nav-item nav-link" href="{% url 'accounts:register' %}?next={{request.path}}">Register</a>
                             {% endif %}
+                            <li><a class="nav-item nav-link" href="{% url 'store:create' %}?next={{request.path}}">Create</a></li>
+                            <li><a class="nav-item nav-link" href="{% url 'admin:index' %}?next={{request.path}}">admin</a></li>
                         </div>
                     </div>
                 </nav>
